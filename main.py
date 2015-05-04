@@ -23,19 +23,14 @@ m.assignWorker(d);
 for worker in m.assignedWorkers:
     print(worker)
 
-def guiLoop(int):
-    while(1):
-        sleep(1)
-        int = int + 1
-        print(int)
-
 
 def Pressed():
+    #tkSimpleDialog.askstring('Occupation', 'From: \'mining\'')
     d.assignTask('mining')
     print('Assigned Worker to' + ' ' + str(d.task))
 
 def threadLoop():
-    root.mainloop()
+
     while(True):
         print('bla')
         sleep(0.5)
@@ -48,5 +43,5 @@ button.pack(pady=20, padx=20)
 entry.pack()
 
 
-thread = start_new_thread(threadLoop(), tuple([]))
+thread = start_new_thread(threadLoop, tuple([]))
 root.mainloop()
