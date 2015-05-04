@@ -1,7 +1,7 @@
 # All locations/occupations that a worker can inhabit
 
 class Mine:
-    """  """
+    """ A place were workers mine stone and other minerals """
     def __init__(self):
         self.assignedWorkers = []
 

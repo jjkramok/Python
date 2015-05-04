@@ -10,11 +10,12 @@ from time import sleep
 
 #initializing view
 root = Tk()
-list = 'Carl Patric Lindsay Helmut Chris Gwen'.split()
+
+"""
 listb = Listbox(root)
 for item in list:
     listb.insert(0, item)
-
+"""
 
 d = Worker(1, 2);
 m = Mine();
@@ -33,13 +34,19 @@ def Pressed():
     d.assignTask('mining')
     print('Assigned Worker to' + ' ' + str(d.task))
 
+def threadLoop():
+    root.mainloop()
+    while(True):
+        print('bla')
+        sleep(0.5)
+
 
 button = Button(root, text='Assign current to mines', command = Pressed)
 entry = Entry(root)
 
 button.pack(pady=20, padx=20)
-listb.pack()
 entry.pack()
 
-gui = start_new_thread(guiLoop, tuple([10]))
+
+thread = start_new_thread(threadLoop(), tuple([]))
 root.mainloop()
