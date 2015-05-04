@@ -1,11 +1,19 @@
 import random
+from Tkinter import *
 
-# Bash import statement:
+# --< Bash import statement: >--
 #import sys; sys.path.append("/home/tim/git/Python"); import main
+
+root = Tk()
+list = 'Carl Patric Lindsay Helmut Chris Gwen'.split()
+listb = Listbox(root)
+for item in list:
+    listb.insert(0, item)
+
+
 
 class Worker:
     """  """
-
     def __init__(self, condition, task):
         self.condition = condition
         self.task = task
@@ -14,19 +22,12 @@ class Worker:
     def __str__(self):
         return str(self.task)
 
-    def task(task):
-        if (task == self.task):
-            print("I am already doing: " + task)
-        else:  #Chance to start a different task
-            otherTask = random.randint(0, 1000) / 1000
-        if (otherTask > 0.80):
-            self.task = task
-            print("I am now doing: " + task)
-            return task
-
+    def assignTask(self, task):
+        pass
 
 
 class Mine:
+    """  """
     def __init__(self):
         self.assignedWorkers = []
 
@@ -42,3 +43,23 @@ m.assignWorker(d);
 for worker in m.assignedWorkers:
     print(worker)
 
+def guiLoop(integer):
+    int = integer + 1
+    print 'Potje vet?: ' + str(int)
+    root.after(200, guiLoop(int))
+
+
+def Pressed():
+    d.assignTask('mining')
+    print 'Assigned Worker to' + ' ' + str(d.task)
+
+
+button = Button(root, text='Assign current to mines', command = Pressed)
+entry = Entry(root)
+
+button.pack(pady=20, padx=20)
+listb.pack()
+entry.pack()
+
+root.after(200, guiLoop(10))
+root.mainloop()
