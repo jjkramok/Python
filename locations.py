@@ -6,6 +6,10 @@ class Location:
     def __init__(self):
         pass
 
+    def assignWorker(self, worker):
+        if (worker.isFree()):
+            self.assignedWorkers += [worker]
+
 
 
 

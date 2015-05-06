@@ -12,3 +12,9 @@ class Worker:
 
     def assignTask(self, task):
         pass
+
+    def isFree(self):
+        if self.task == '' or self.task == 'None':
+            return True
+        else:
+            return False
