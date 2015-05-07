@@ -1,7 +1,7 @@
 from tkinter import *
 from _thread import *
 from units import *
-from locations import *
+from occupation import *
 from time import sleep
 
 # --< Bash import statement: >--

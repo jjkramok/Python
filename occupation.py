@@ -1,8 +1,12 @@
 # All locations/occupations that a worker can inhabit
 import _thread
 
+
+# TODO This current structure is not desired, instead make one class Occupation (now a stub)
+# TODO that handles all current occupations
+
 # Stub location class
-class Location:
+class Occupation:
     """ """
     def __init__(self):
         self.assignedWorkers = []
@@ -12,8 +16,7 @@ class Location:
         pass
 
 
-
-class Mine(Location):
+class Mine(Occupation):
     """ A place were workers mine stone and other minerals """
     def __init__(self, size):
         super(Mine).__init__()
@@ -26,7 +29,7 @@ class Mine(Location):
             worker.task = 'mining'
 
 
-class Woods(Location):
+class Woods(Occupation):
     """ """
     def __init__(self, regrowth, size):
         super(Woods).__init__()
@@ -40,7 +43,7 @@ class Woods(Location):
             worker.task = 'woodcutting'
 
 
-class Farm(Location):
+class Farm(Occupation):
     """ """
     def __init__(self, regrowth, size):
         super(Farm).__init__()
@@ -52,3 +55,15 @@ class Farm(Location):
             self.assignedWorkers += [worker]
             worker.workspace = self
             worker.task = 'farmer'
+
+
+class Free(Occupation):
+    """ A zero occupation, the unit is not doing anything useful """
+    def __init__(self):
+        super(Free).__init__(self)
+
+    def assignWorker(self, worker):
+        if not worker.isFree():
+            self.assignedWorkers += [worker]
+            worker.workspace = self
+            worker.task = 'free'

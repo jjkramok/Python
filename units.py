@@ -32,11 +32,11 @@ class Worker:
         pass
 
     def isFree(self):
-        if self.task == '' or self.task == 'None':
+        if self.task == '' or self.task == 'free':
             return True
         else:
             return False
 
     def destroy(self):
-        for worker in workers:
-            if
+        """ Removes reference from the units.workers list """
+        workers.remove(self)
