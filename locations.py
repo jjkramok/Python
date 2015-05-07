@@ -1,10 +1,12 @@
 # All locations/occupations that a worker can inhabit
+import _thread
 
-
+# Stub location class
 class Location:
     """ """
     def __init__(self):
         self.assignedWorkers = []
+
 
     def assignWorker(self, worker):
         pass

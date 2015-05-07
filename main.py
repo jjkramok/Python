@@ -23,6 +23,10 @@ m.assignWorker(d);
 for worker in m.assignedWorkers:
     print(worker)
 
+def economy():
+    while(True):
+        sleep(1)
+
 
 def Pressed():
     #tkSimpleDialog.askstring('Occupation', 'From: \'mining\'')
@@ -42,6 +46,6 @@ entry = Entry(root)
 button.pack(pady=20, padx=20)
 entry.pack()
 
-
+econ_thread = start_new_thread(economy, tuple([]))
 thread = start_new_thread(threadLoop, tuple([]))
 root.mainloop()
