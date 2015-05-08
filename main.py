@@ -26,6 +26,8 @@ for worker in m.assignedWorkers:
 def economy():
     while(True):
         sleep(1)
+        for occupation in occupationDict:
+            occupation.harvest()
 
 
 def Pressed():

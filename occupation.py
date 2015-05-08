@@ -1,23 +1,49 @@
 # All locations/occupations that a worker can inhabit
-import _thread
 
 
 # TODO This current structure is not desired, instead make one class Occupation (now a stub)
 # TODO that handles all current occupations
 
+
+# Dictionary of all initialized Occupation (types)
+occupationDict = {}
+
 # Stub location class
 class Occupation:
-    """ """
-    def __init__(self):
+    """ type of occupation, regrowth rate and size of the occupation, taskName is the name of the task bound to the type of the Occupation"""
+    def __init__(self, type, taskName, regrowth, size):
         self.assignedWorkers = []
+        self.type = type
+        self.size = size
+        self.regrowth = regrowth
+        self.taskName = taskName
+        occupationDict.update({type: self})
 
 
     def assignWorker(self, worker):
+        if type == 'Free':
+            if not worker.isFree():
+                self.assignedWorkers += [worker]
+                worker.workspace = self             # Test if worker.workspace is set to this instance of Occupation,
+                                                    # and not the self passed to assignWorker()
+                worker.task = self.taskName
+        else:
+            if worker.isFree():
+                self.assignedWorkers += [worker]
+                worker.workspace = self
+                worker.task = self.taskName
+
+    def harvest(self):
+        pass
+
+    def generateProduce(self):
         pass
 
 
+# ------------------------------- Deprecated
+"""
 class Mine(Occupation):
-    """ A place were workers mine stone and other minerals """
+    ''' A place were workers mine stone and other minerals '''
     def __init__(self, size):
         super(Mine).__init__()
         self.size = size
@@ -58,7 +84,7 @@ class Farm(Occupation):
 
 
 class Free(Occupation):
-    """ A zero occupation, the unit is not doing anything useful """
+    ''' A zero occupation, the unit is not doing anything useful '''
     def __init__(self):
         super(Free).__init__(self)
 
@@ -67,3 +93,4 @@ class Free(Occupation):
             self.assignedWorkers += [worker]
             worker.workspace = self
             worker.task = 'free'
+"""
