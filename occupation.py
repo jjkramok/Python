@@ -1,5 +1,7 @@
 # All locations/occupations that a worker can inhabit
 
+from main import resourcePool
+from main import getPool
 
 # TODO This current structure is not desired, instead make one class Occupation (now a stub)
 # TODO that handles all current occupations
@@ -27,8 +29,7 @@ class Occupation:
         if type == 'Free':
             if not worker.isFree():
                 self.assignedWorkers += [worker]
-                worker.workspace = self             # Test if worker.workspace is set to this instance of Occupation,
-                                                    # and not the self passed to assignWorker()
+                worker.workspace = self
                 worker.task = self.taskName
         else:
             if worker.isFree():
@@ -38,7 +39,10 @@ class Occupation:
 
     # used in main#economyLoop, adding the result of generateProduce to the resource pool
     def harvest(self):
-        pass
+        pool = getPool()
+        harvest = self.generateProduce() + pool.get(type)
+        pool.update({type: harvest})
+        return pool
 
     # used to calculated the amount of resources this Occupation generated this step
     def generateProduce(self):

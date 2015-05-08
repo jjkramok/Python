@@ -8,11 +8,17 @@ from time import sleep
 #import sys; sys.path.append("/home/tim/git/Python"); import main
 
 
-# initializing view
+# --- initializing view --- #
 root = Tk()
 
-# initializing stuff
+
+# --- initializing stuff --- #
 resourcePool = {'wood': 0, 'food': 0, 'stone': 0}
+
+
+# --- Getters --- #
+def getPool():
+    return resourcePool
 
 """
 listb = Listbox(root)
