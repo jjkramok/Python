@@ -10,11 +10,14 @@ occupationDict = {}
 
 # Stub location class
 class Occupation:
-    """ type of occupation, regrowth rate and size of the occupation, taskName is the name of the task bound to the type of the Occupation"""
-    def __init__(self, type, taskName, regrowth, size):
+    """ type of occupation, regrowth rate and size of the occupation, taskName is the name of the task bound to the type of the Occupation
+
+    """
+    def __init__(self, type, taskName, resource, regrowth, size):
         self.assignedWorkers = []
         self.type = type
         self.size = size
+        self.resource = resource
         self.regrowth = regrowth
         self.taskName = taskName
         occupationDict.update({type: self})
@@ -33,12 +36,15 @@ class Occupation:
                 worker.workspace = self
                 worker.task = self.taskName
 
+    # used in main#economyLoop, adding the result of generateProduce to the resource pool
     def harvest(self):
         pass
 
+    # used to calculated the amount of resources this Occupation generated this step
     def generateProduce(self):
         pass
 
+# idea: for the Mine, in time the tunnels will go deeper into the earth, getting access to new minerals, that are not visible in the resource pool, until mined for the first time.
 
 # ------------------------------- Deprecated
 """
