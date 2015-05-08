@@ -14,7 +14,9 @@ root = Tk()
 
 # --- initializing stuff --- #
 resourcePool = {'wood': 0, 'food': 0, 'stone': 0}
-
+farm = Occupation('Farm', 'farming', 'food', 3.0, 100, 1)
+mine = Occupation('Mine', 'mining', 'stone', 0, 123456, 0.9)
+forest = Occupation('Farm', 'farming', 'food', 3.0, 100, 1)
 
 # --- Getters --- #
 def getPool():
@@ -26,11 +28,6 @@ for item in list:
     listb.insert(0, item)
 """
 
-d = Worker(1, 2);
-m = Mine();
-m.assignWorker(d);
-for worker in m.assignedWorkers:
-    print(worker)
 
 def economy():
     while(True):
