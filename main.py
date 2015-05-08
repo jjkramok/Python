@@ -14,9 +14,9 @@ root = Tk()
 
 # --- initializing stuff --- #
 resourcePool = {'wood': 0, 'food': 0, 'stone': 0}
-farm = Occupation('Farm', 'farming', 'food', 3.0, 100, 1)
-mine = Occupation('Mine', 'mining', 'stone', 0, 123456, 0.9)
-forest = Occupation('Farm', 'farming', 'food', 3.0, 100, 1)
+farm = Occupation('Farm', 'farming', 'food', 0.1, 100, 3)
+mine = Occupation('Mine', 'mining', 'stone', 0, 123456, 0.8)
+forest = Occupation('Forest', 'woodcutting', 'wood', 0.05, 100, 1)
 
 # --- Getters --- #
 def getPool():

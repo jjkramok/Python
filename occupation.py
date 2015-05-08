@@ -16,7 +16,7 @@ class Occupation:
         type: Which kind of Occupation this is. First letter is upper-case Ex. Farm, Mine
         taskName: The action name of the Occupation#type, entirely lower-case Ex. farming, mining
         resource: The type of resource this Occupation yields, entirely lower-case Ex. food, stone
-        regrowth: The rate at which the Occupation#size grows in time
+        regrowth: The rate at which the Occupation#size grows in time, in units per unit
         size: Initial size of the Occupation, if the size is 0, there are no resources left to gather
         efficiency: How easy/hard it is to extract produce from this type of Occupation, in resourceUnits per step (per worker)
     """
