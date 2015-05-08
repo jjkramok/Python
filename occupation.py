@@ -13,15 +13,15 @@ class Occupation:
     """ type of occupation, regrowth rate and size of the occupation, taskName is the name of the task bound to the type of the Occupation
 
     """
-    def __init__(self, type, taskName, resource, regrowth, size):
+    def __init__(self, type, taskName, resource, regrowth, size, efficiency):
         self.assignedWorkers = []
         self.type = type
         self.size = size
+        self.efficiency = efficiency
         self.resource = resource
         self.regrowth = regrowth
         self.taskName = taskName
         occupationDict.update({type: self})
-
 
     def assignWorker(self, worker):
         if type == 'Free':
@@ -42,7 +42,18 @@ class Occupation:
 
     # used to calculated the amount of resources this Occupation generated this step
     def generateProduce(self):
-        pass
+        produce = self.efficiency * len(self.assignedWorkers)
+        if produce > self.size:
+            produce = self.size
+            print('our' + ' ' + str(type) + ' ' + 'is empty!')
+        return produce
+
+    # used to calculate the new size of the Occupation
+    def grow(self):
+        self.size += self.regrowth
+
+
+
 
 # idea: for the Mine, in time the tunnels will go deeper into the earth, getting access to new minerals, that are not visible in the resource pool, until mined for the first time.
 
