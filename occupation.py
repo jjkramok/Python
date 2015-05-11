@@ -3,10 +3,6 @@
 from main import resourcePool
 from main import getPool
 
-# TODO This current structure is not desired, instead make one class Occupation (now a stub)
-# TODO that handles all current occupations
-
-
 # Dictionary of all initialized Occupation (types)
 occupationDict = {}
 
