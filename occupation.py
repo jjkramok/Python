@@ -27,7 +27,7 @@ class Occupation:
         occupationDict.update({type: self})
 
     def assignWorker(self, worker):
-        if type == 'Free':
+        if type == 'Free':  # TODO If statement not really needed
             if not worker.isFree():
                 self.assignedWorkers += [worker]
                 worker.workspace = self

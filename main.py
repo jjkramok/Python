@@ -17,6 +17,7 @@ resourcePool = {'wood': 0, 'food': 0, 'stone': 0}
 farm = Occupation('Farm', 'farming', 'food', 0.1, 100, 3)
 mine = Occupation('Mine', 'mining', 'stone', 0, 123456, 0.8)
 forest = Occupation('Forest', 'woodcutting', 'wood', 0.05, 100, 1)
+free = Occupation('Free', 'free', None, None, None, None)
 
 # --- Getters --- #
 def getPool():
