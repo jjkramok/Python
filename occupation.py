@@ -1,13 +1,10 @@
 # All locations/occupations that a worker can inhabit
 
-from main import resourcePool
-from main import getPool
-
 # Dictionary of all initialized Occupation (types)
 occupationDict = {}
 
 # Stub location class
-class Occupation:
+class Occupation(object):
     """ Occupation is where a worker can work and generate produce
         type: Which kind of Occupation this is. First letter is upper-case Ex. Farm, Mine
         taskName: The action name of the Occupation#type, entirely lower-case Ex. farming, mining
@@ -16,7 +13,7 @@ class Occupation:
         size: Initial size of the Occupation, if the size is 0, there are no resources left to gather
         efficiency: How easy/hard it is to extract produce from this type of Occupation, in resourceUnits per step (per worker)
     """
-    def __init__(self, type, taskName, resource, regrowth, size, efficiency):
+    def __init__(self, resourcePool, type, taskName, resource, regrowth, size, efficiency):
         self.assignedWorkers = []
         self.type = type
         self.size = size
@@ -24,6 +21,7 @@ class Occupation:
         self.resource = resource
         self.regrowth = regrowth
         self.taskName = taskName
+        self.pool = resourcePool
         occupationDict.update({type: self})
 
     def assignWorker(self, worker):
@@ -40,10 +38,10 @@ class Occupation:
 
     # used in main#economyLoop, adding the result of generateProduce to the resource pool, beware multithreading?
     def harvest(self):
-        pool = getPool()
-        harvest = self.generateProduce() + pool.get(type)
-        pool.update({self.resource: harvest})
-        return pool
+        if self.pool.get(type) is not None:
+            harvest = self.generateProduce() + self.pool.get(type)
+            self.pool.update({self.resource: harvest})
+            #return pool
 
     # used to calculated the amount of resources this Occupation generated this step
     def generateProduce(self):

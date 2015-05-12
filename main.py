@@ -2,6 +2,7 @@ from tkinter import *
 from _thread import *
 from units import *
 from occupation import *
+
 from time import sleep
 
 # --< Bash import statement: >--
@@ -14,13 +15,13 @@ root = Tk()
 
 # --- initializing stuff --- #
 resourcePool = {'wood': 0, 'food': 0, 'stone': 0}
-farm = Occupation('Farm', 'farming', 'food', 0.1, 100, 3)
-mine = Occupation('Mine', 'mining', 'stone', 0, 123456, 0.8)
-forest = Occupation('Forest', 'woodcutting', 'wood', 0.05, 100, 1)
-free = Occupation('Free', 'free', None, None, None, None)
+farm = Occupation(resourcePool, 'Farm', 'farming', 'food', 0.1, 100, 3)
+mine = Occupation(resourcePool, 'Mine', 'mining', 'stone', 0, 123456, 0.8)
+forest = Occupation(resourcePool, 'Forest', 'woodcutting', 'wood', 0.05, 100, 1)
+free = Occupation(resourcePool, 'Free', 'free', None, None, None, None)
 
 # --- Getters --- #
-def getPool():
+def get_pool():
     return resourcePool
 
 """
@@ -34,10 +35,10 @@ def economy():
     while(True):
         sleep(1)
         for occupation in occupationDict:
-            occupation.harvest()
+            occupationDict[occupation].harvest()
 
 
-def Pressed():
+def Pressed(d):
     #tkSimpleDialog.askstring('Occupation', 'From: \'mining\'')
     d.assignTask('mining')
     print('Assigned Worker to' + ' ' + str(d.task))
