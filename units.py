@@ -18,9 +18,9 @@ workers = []
 
 class Worker:
     """ A worker, can work in different places for resources"""
-    def __init__(self, condition, task):
+    def __init__(self, condition):
         self.condition = condition
-        self.task = task
+        self.task = ''
         self.workspace = 0
         workers.append(self)
 

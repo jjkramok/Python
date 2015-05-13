@@ -19,6 +19,9 @@ farm = Occupation(resourcePool, 'Farm', 'farming', 'food', 0.1, 100, 3)
 mine = Occupation(resourcePool, 'Mine', 'mining', 'stone', 0, 123456, 0.8)
 forest = Occupation(resourcePool, 'Forest', 'woodcutting', 'wood', 0.05, 100, 1)
 free = Occupation(resourcePool, 'Free', 'free', None, None, None, None)
+dwarf = Worker('healty')
+forest.assignWorker(dwarf)
+
 
 # --- Getters --- #
 def get_pool():
@@ -36,12 +39,13 @@ def economy():
         sleep(1)
         for occupation in occupationDict:
             occupationDict[occupation].harvest()
+        print(str(resourcePool))
 
 
-def Pressed(d):
+def Pressed():
     #tkSimpleDialog.askstring('Occupation', 'From: \'mining\'')
-    d.assignTask('mining')
-    print('Assigned Worker to' + ' ' + str(d.task))
+    print('Assigned Worker to' + ' !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!')
+    root.after(500, Pressed)
 
 def threadLoop():
 
@@ -58,4 +62,5 @@ entry.pack()
 
 econ_thread = start_new_thread(economy, tuple([]))
 thread = start_new_thread(threadLoop, tuple([]))
+#root.after(100, Pressed())
 root.mainloop()

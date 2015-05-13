@@ -22,7 +22,7 @@ class Occupation(object):
         self.regrowth = regrowth
         self.taskName = taskName
         self.pool = resourcePool
-        occupationDict.update({type: self})
+        occupationDict.update({self.type: self})
 
     def assignWorker(self, worker):
         if type == 'Free':  # TODO If statement not really needed
@@ -32,20 +32,23 @@ class Occupation(object):
                 worker.task = self.taskName
         else:
             if worker.isFree():
+                print("Worker is free!")
                 self.assignedWorkers += [worker]
                 worker.workspace = self
                 worker.task = self.taskName
 
     # used in main#economyLoop, adding the result of generateProduce to the resource pool, beware multithreading?
     def harvest(self):
-        if self.pool.get(type) is not None:
-            harvest = self.generateProduce() + self.pool.get(type)
+        print("Harvesting you souls!: " + str(self.pool.get(self.type)))
+        if self.pool.get(self.type) is not None:
+            harvest = self.generateProduce() + self.pool.get(self.type)
             self.pool.update({self.resource: harvest})
             #return pool
 
     # used to calculated the amount of resources this Occupation generated this step
     def generateProduce(self):
         produce = self.efficiency * len(self.assignedWorkers)
+        print(type + ' size is: ' + str(self.size))
         if produce > self.size:
             produce = self.size
             print('our' + ' ' + str(type) + ' ' + 'is empty!')
