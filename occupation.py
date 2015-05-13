@@ -39,24 +39,25 @@ class Occupation(object):
 
     # used in main#economyLoop, adding the result of generateProduce to the resource pool, beware multithreading?
     def harvest(self):
-        print("Harvesting you souls!: " + str(self.pool.get(self.type)))
-        if self.pool.get(self.type) is not None:
-            harvest = self.generateProduce() + self.pool.get(self.type)
+        print("Harvesting you souls!: " + str(self.pool.get(self.resource)))
+        if self.pool.get(self.resource) is not None:
+            harvest = self.generateProduce() + self.pool.get(self.resource)
             self.pool.update({self.resource: harvest})
             #return pool
 
     # used to calculated the amount of resources this Occupation generated this step
     def generateProduce(self):
         produce = self.efficiency * len(self.assignedWorkers)
-        print(type + ' size is: ' + str(self.size))
+        print(self.resource + ' size is: ' + str(self.size))
         if produce > self.size:
             produce = self.size
-            print('our' + ' ' + str(type) + ' ' + 'is empty!')
+            print('our' + ' ' + str(self.type) + ' ' + 'is empty!')
         return produce
 
     # used to calculate the new size of the Occupation
     def grow(self):
-        self.size += self.regrowth
+        if self.type is not 'Free':
+            self.size += self.regrowth * self.size
 
 
 

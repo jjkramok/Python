@@ -38,6 +38,7 @@ def economy():
     while(True):
         sleep(1)
         for occupation in occupationDict:
+            occupationDict[occupation].grow()
             occupationDict[occupation].harvest()
         print(str(resourcePool))
 
@@ -50,7 +51,7 @@ def Pressed():
 def threadLoop():
 
     while(True):
-        print('bla')
+        #print('bla')
         sleep(0.5)
 
 
